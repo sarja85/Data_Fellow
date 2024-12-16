@@ -1,0 +1,199 @@
+library(usethis)
+library(gh)
+gh_whoami()
+
+#' Exploring R, and writing simple basic functions
+
+20 * 10.5
+17+23-7
+
+#' Using other functions such as log(), sqrt. 
+
+sqrt(25)
+
+#' Error messages 
+
+sqrt(a)
+sqrt("a")
+SQRT(25)
+sqrt(25))
+
+
+#' Writing comments on code using to calculate the area of a circle.
+
+area_of_circle <-pi * 4 ^2 
+
+area_of_circle
+
+# ' Data types using differnet forms
+my_first_variable <- 20
+my_first_variable
+
+#' Using uninformative and informative names.
+b <- 2/10
+malaria_prevalence_2020 <- 2/10
+ 
+#' If you create a lot of variable names and can't recall it, you can use the ls()
+
+ls()
+#' How to overwrite a variable at any point. 
+
+test_variable <- 15
+test_variable
+test_variable <- 20
+test_variable 
+#' Dealing with strings 
+
+my_first_string <- "avocado"
+my_first_string
+my_first_string * my_first_string
+class(my_first_string)
+class(my_first_variable)
+
+#' Dealing with a vector 
+
+v1 <- c(1,2,3,4,5)
+v2 <- c(0.1,0.15,0.2,0.4,0.5)
+v3 <- c("red","blue","green","orange","black")
+v1[3]
+
+v1[0]
+v1[6]
+
+#' summary statistics 
+#' 
+mean(v1)
+sd(v1) 
+var(v1)
+min(v1)
+max(v1)
+sum(v1)
+sum(v1[c(1,4)])
+length(v1)
+plot(v1)
+plot(v2,v1)
+
+#' Creating a vector
+
+v4 <- rep (0,14)
+v4[1] <- 10
+v4
+
+#' Data frames using the CO2
+?CO2
+data("CO2")
+head(CO2)
+
+#' How to read the first 20 lines
+
+head(CO2, n=20)
+
+#' If you want to view the full dataset 
+
+dim(CO2)
+ CO2[,5]
+ 
+#' You can even subset the data, 
+#' for example if you wanted to create a 
+#' new dataframe, CO2_op2, which contains all rows 
+#'but only the second and third columns
+#'
+
+ CO2_op2 <- CO2[,2:3]
+ head(CO2_op2)
+ 
+ #' Checking the data structure type 
+ 
+ str(CO2)
+summary(CO2) 
+
+# ' If you want to explore column of a dataframe ($)
+
+CO2$Treatment
+
+#' Another useful function to quickly explore data is ‘table’
+table(CO2$Treatment)
+
+#' What is the value in the 14th row and 5th column?
+CO2[14,5]
+
+#' What are the values in the 1st to 7th rows of 4th column
+CO2[1:7, 4]
+
+#' How many of the samples are from Quebec?
+
+table(CO2$Type)
+
+#' Summarizing numeric data
+
+mean(CO2$uptake) 
+
+#' What is the range and median of the uptake column 
+
+range(CO2$uptake)
+median(CO2$uptake)
+
+#' What if we only want to know the mean of the ‘uptake’ from Quebec?
+which(CO2$Type == "Quebec")
+CO2$conc[which(CO2$Type == "Quebec")]
+
+mean(CO2$uptake[which(CO2$Type == "Quebec")])
+attach(CO2)
+library(tidyverse)
+
+#' Alternative way of cqlculating the mean of a specific type 
+#' 
+op1=filter(CO2, Type == "Quebec")
+mean(op1uptake)
+op1 = filter(CO2, Type == "Quebec")
+
+mean(op1$uptake)
+#' Filtering two criteria 
+
+op2= filter(CO2, Type == "Quebec", Treatment == "chilled")
+mean(op2$uptake)
+op3 = filter (CO2, Type == "Quebec", Treatment =="chilled") 
+median(op3$uptake)
+ 
+op4 = filter (CO2, Type == "Mississippi", Treatment =="nonchilled") 
+median(op4$uptake)
+
+#' Package Installation 
+#' 
+install.packages("sf")
+library()
+install.packages("ggplot2")
+install.packages("janitor")
+library(janitor)
+install.packages("wesanderson")
+library(wesanderson)
+install.packages("cowsay")
+names(wes_palettes)
+install.packages("foreign")
+library(foreign)
+cols = wes_palette("GrandBudapest1")
+cols
+
+#' Reading Data in R 
+#' 
+#' Load packages
+library(readr)
+library(tidyverse)
+dat <- read_csv ("data for practice/ training_case_data_wide.csv")
+dat1 <- read_csv("data for practice/training_case_data_wide.csv")
+
+head(dat1)
+
+# How to make other variables to show
+options(dplyr.width = Inf)
+options(dplyr.width = Inf)
+
+#' How to know the # of confirmed malaria cases in Katete district 2020
+#' 
+dat1 <- dat1 %>% mutate(year = lubridate :: year(period))
+
+dat1 <- dat1 %>% mutate(year = lubridate:: year(period))
+
+mal = filter(dat1, district == "Katete", year == 2020)
+
+mal= filter(dat1, district == "Katete", year == 2020)
